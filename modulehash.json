@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+    "scopes": {
+        "shop-root": {
+            "hashes": {
+                "/admin/bx_mpi.php": "4816520d47e1677396b252d7964d0644",
+                "/admin/images/icons/heading/bx_mpi.png": "57130d84186ad27825d0e84cd251be78",
+                "/admin/includes/classes/ProductIdentifier.php": "719b3969f431df93fa6ecc2ead938e37",
+                "/admin/includes/extra/application_top/application_top_end/bx_mpi.php": "d498e778c001bee0b0f6d4aea0acfde8",
+                "/admin/includes/extra/css/bx_mpi.php": "5d6315f50666083fbdd4a958fed95698",
+                "/admin/includes/extra/database_tables/bx_mpi.php": "9a2252b9f46ea4950d52a32b827f37f0",
+                "/admin/includes/extra/filenames/bx_mpi.php": "63fae607a3f0bd2de1ca53c565a79058",
+                "/admin/includes/extra/javascript/bx_mpi.php": "b8df7093d51da38f1489d353cbf954f3",
+                "/admin/includes/extra/menu/bx_mpi.php": "1397c0c27f4c6187108e5f69100441b6",
+                "/admin/includes/extra/modules/new_product/bx_mpi.php": "ef9884d105a6fa5e82bd61f9c2f358e5",
+                "/admin/includes/modules/system/bx_mpi.php": "9c948a0c2c16d73bff2a8dad3e2478bd",
+                "/includes/classes/bx_cartesian_builder.php": "a129ce39381c5489256d437712791428",
+                "/includes/extra/database_tables/bx_mpi.php": "fb370899a7752269f6017cb2894f6967",
+                "/lang/english/extra/admin/bx_mpi.php": "75412aeda8941fa2842e5c482c0dcf5e",
+                "/lang/english/modules/system/bx_mpi.php": "a2dc26be76660016c75961849efca67d",
+                "/lang/german/extra/admin/bx_mpi.php": "692c37fb866506a784a3ce498b04fd73",
+                "/lang/german/modules/system/bx_mpi.php": "ae9a116c7a30853d09ff9902df0cea03"
+            }
+        },
+        "shop-vendor-mmlc": {
+            "hashes": []
+        }
+    }
+}

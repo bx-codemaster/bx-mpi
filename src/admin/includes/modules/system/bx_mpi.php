@@ -644,9 +644,10 @@ class bx_mpi {
 				warehouse_location varchar(100) DEFAULT NULL COMMENT 'Lagerplatz (z.B. A-12-03)',
 				products_stock_attributes text DEFAULT NULL COMMENT 'Serialisierte Attribut-Daten',
 				products_stock_quantity decimal(15,4) NOT NULL DEFAULT 0.0000 COMMENT 'Lagerbestand',
+				bx_exported varchar(1) NOT NULL DEFAULT 'n' COMMENT 'Billbee Exportstatus',
 				created_at datetime NOT NULL DEFAULT current_timestamp(),
 				updated_at datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-			) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Gemeinsame Varianten-Tabelle für BX MPI und BX Stockmanager'");
+			) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Gemeinsame Varianten-Tabelle für BX MPI, BX Stockmanager und Billbee'");
 
 			// Indizes für Performance und Datenkonsistenz
 			//
@@ -821,7 +822,7 @@ class bx_mpi {
     xtc_db_query("DROP TABLE IF EXISTS bx_ean_pool");
     xtc_db_query("DROP TABLE IF EXISTS bx_ean_blocks");
 
-		if(!defined("MODULE_BX_STOCKMANAGER_STATUS")) {
+		if(!defined("MODULE_BX_STOCKMANAGER_STATUS") && !defined("MODULE_BILLBEE_STATUS")) {
 			xtc_db_query("DROP TABLE IF EXISTS bx_product_variants;");
 		}
   }

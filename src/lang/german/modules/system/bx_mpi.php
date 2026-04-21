@@ -18,7 +18,7 @@ defined('_VALID_XTC') or die('Direct Access to this location is not allowed.');
 // Modul-Titel & Beschreibung
 define('MODULE_BX_MPI_TEXT_TITLE', 'BX Product Identifier (MPI)');
 define('MODULE_BX_MPI_TEXT_DESCRIPTION', '
-  <h3 style="margin-top: 0;">🔑 BX Product Identifier (MPI)</h3>
+  <h3 style="margin-top: 0; display:flex; align-items:center; gap:8px;">'.xtc_image(DIR_WS_ICONS.'heading/bx_mpi.png', 'BX Product Identifier', '', '', 'style="max-height: 32px;"').' BX Product Identifier (MPI)</h3>
   <div style="background: #f8f9fa; padding: 5px 20px; border-radius: 8px; margin: 10px 0;">    
     <p>Dieses Modul ermöglicht die eindeutige Identifikation von Produkten mit Attributen für die Warenwirtschafts-Integration.</p>
     <p>Zentrale Verwaltung eindeutiger Produktidentifikatoren</p>

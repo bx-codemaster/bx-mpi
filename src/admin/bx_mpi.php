@@ -163,6 +163,31 @@ if (isset($_POST['import_block']) && isset($_FILES['csv_file'])) {
     if ($ean_count == 0) {
       throw new Exception(BX_MPI_ERR_NO_VALID_EANS);
     }
+
+    // Bereits vergebene EANs aus Identifiers ermitteln
+    $assigned_eans = array();
+    $ean_chunks    = array_chunk($eans, 200);
+    foreach ($ean_chunks as $ean_chunk) {
+      $escaped_eans = array();
+      foreach ($ean_chunk as $ean) {
+        $escaped_eans[] = "'" . xtc_db_input($ean) . "'";
+      }
+
+      $assigned_query = xtc_db_query("
+        SELECT identifier_id, products_ean
+        FROM " . TABLE_PRODUCT_IDENTIFIERS . "
+        WHERE products_ean IN (" . implode(',', $escaped_eans) . ")
+      ");
+
+      while ($assigned_row = xtc_db_fetch_array($assigned_query)) {
+        if (!empty($assigned_row['products_ean'])) {
+          $assigned_eans[$assigned_row['products_ean']] = (int)$assigned_row['identifier_id'];
+        }
+      }
+    }
+
+    $already_used_count = count($assigned_eans);
+    $block_status = ($already_used_count >= $ean_count) ? 'depleted' : 'active';
     
     // Transaktion starten
     xtc_db_query("START TRANSACTION");
@@ -176,8 +201,8 @@ if (isset($_POST['import_block']) && isset($_FILES['csv_file'])) {
           '" . $block_size . "',
           '" . xtc_db_input($purchased_at) . "',
           '" . $ean_count . "',
-          0,
-          'active',
+              '" . $already_used_count . "',
+              '" . $block_status . "',
           '" . xtc_db_input($notes) . "')
     ");
     
@@ -190,12 +215,16 @@ if (isset($_POST['import_block']) && isset($_FILES['csv_file'])) {
     foreach ($batches as $batch) {
       $values = array();
       foreach ($batch as $ean) {
-        $values[] = "('" . $block_id . "', '" . xtc_db_input($ean) . "', 'available')";
+        if (isset($assigned_eans[$ean])) {
+          $values[] = "('" . $block_id . "', '" . xtc_db_input($ean) . "', 'assigned', '" . (int)$assigned_eans[$ean] . "', NOW())";
+        } else {
+          $values[] = "('" . $block_id . "', '" . xtc_db_input($ean) . "', 'available', NULL, NULL)";
+        }
       }
       
       xtc_db_query("
           INSERT INTO " . TABLE_PRODUCT_IDENTIFIER_EAN_POOL . " 
-          (block_id, ean, status)
+          (block_id, ean, status, identifier_id, assigned_at)
           VALUES " . implode(',', $values)
       );
     }
