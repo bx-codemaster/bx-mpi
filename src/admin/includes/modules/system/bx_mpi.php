@@ -53,15 +53,23 @@
 defined('_VALID_XTC') or die('Direct Access to this location is not allowed.');
 
 class bx_mpi {
-  var $code, $title, $description, $enabled, $version, $sort_order, $_check;
+  public string $code;
+  public string $title;
+  public string $description;
+  public bool $enabled;
+  public string $version;
+  public int $sort_order;
+  private ?int $_check = null;  
+  public string $development_status; // 'p' = production ready, 'd' = in development
 
   function __construct() {
-    $this->version     = '1.0.0';
     $this->code        = 'bx_mpi';
+    $this->version     = '1.0.0';
     $this->title       = MODULE_BX_MPI_TEXT_TITLE;
-    $this->description = MODULE_BX_MPI_TEXT_DESCRIPTION . '<p><strong>Version: ' . $this->version . '</strong></p>';
+    $this->description = MODULE_BX_MPI_TEXT_DESCRIPTION;
     $this->sort_order  = defined('MODULE_BX_MPI_SORT_ORDER') ? MODULE_BX_MPI_SORT_ORDER : 0;
     $this->enabled     = defined('MODULE_BX_MPI_STATUS') ? ((MODULE_BX_MPI_STATUS == 'true') ? true : false) : 0;
+    $this->development_status = 'd';
   }
 
   function process($file) {

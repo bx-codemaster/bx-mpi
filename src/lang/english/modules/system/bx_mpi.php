@@ -18,16 +18,21 @@ defined('_VALID_XTC') or die('Direct Access to this location is not allowed.');
 // Module Title & Description
 define('MODULE_BX_MPI_TEXT_TITLE', 'BX Product Identifier (MPI)');
 define('MODULE_BX_MPI_TEXT_DESCRIPTION', '
-  <h3 style="margin-top: 0; display:flex; align-items:center; gap:8px;">'.xtc_image(DIR_WS_ICONS.'heading/bx_mpi.png', 'BX Product Identifier', '', '', 'style="max-height: 32px;"').' BX Product Identifier (MPI)</h3>
-  <div style="background: #f8f9fa; padding: 5px 20px; border-radius: 8px; margin: 10px 0;">
-    <p>Centralised management of unique product identifiers</p>
-    <p>This Module enables the unique identification of products with attributes for ERP integration.</p>
+<details class="bxac-card">
+  <summary class="bxac-summary" style="list-style: none;">
+    <span class="bxac-arrow">▸</span>
+    <span class="bxac-title">' . xtc_image(DIR_WS_ICONS.'heading/bx_mpi.png', 'BX Product Identifier', '', '', 'style="max-height: 32px; vertical-align: middle; margin-right: 8px;"') . 'BX Product Identifier</span>
+  </summary>
+  <div class="bxac-body">
+    <h3 style="margin-top: 0;">Professional Christmas Marketing</h3>
+    <p>This module enables the unique identification of products with attributes for ERP integration.</p>
+    <p>Central management of unique product identifiers</p>
     
     <h4 style="color: #333; margin-top: 20px;">📦 Main Features:</h4>
     <ul>
       <li><strong>SKU Generation:</strong> Automatic creation of unique SKUs for product variants</li>
       <li><strong>EAN/GTIN Management:</strong> Management of EAN-13, UPC, ISBN per variant</li>
-      <li><strong>ERP Integration:</strong> Mapping to external ERP product numbers</li>
+      <li><strong>ERP Integration:</strong> Mapping to external ERP item numbers</li>
       <li><strong>Storage Location Management:</strong> Optional: Shelf/bin assignment</li>
       <li><strong>API for Third-Party Modules:</strong> RMA, shipping, export modules can access it</li>
       <li><strong>Change History:</strong> Optional: Logging of all changes</li>
@@ -35,7 +40,7 @@ define('MODULE_BX_MPI_TEXT_DESCRIPTION', '
     
     <h4 style="color: #333; margin-top: 20px;">💡 Use Cases:</h4>
     <ul>
-      <li><strong>Red T-Shirt M:</strong> TSHIRT-001-RED-M (from base + attributes)</li>
+      <li><strong>T-Shirt Red M:</strong> TSHIRT-001-RED-M (from base + attributes)</li>
       <li><strong>RMA Module:</strong> Unique identification of returned variants</li>
       <li><strong>Shipping Label:</strong> Barcode printing with EAN</li>
       <li><strong>Warehouse Scanner:</strong> Quick product recognition via EAN</li>
@@ -48,8 +53,10 @@ define('MODULE_BX_MPI_TEXT_DESCRIPTION', '
       <li><strong>SKU Separator:</strong> Separator for SKU components (default: "-")</li>
       <li><strong>History:</strong> Log changes (for audit)</li>
     </ul>
-  </div>
+  </div> 
+</details> 
 ');
+
 // Configuration Options
 
 // 1. Status
